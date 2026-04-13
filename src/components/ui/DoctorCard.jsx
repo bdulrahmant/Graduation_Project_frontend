@@ -1,5 +1,5 @@
 import { MapPin, Star, Wallet } from "lucide-react";
-import Button from "./Button";
+import { Button } from "./button";
 
 export default function DoctorCard({
   name,

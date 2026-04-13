@@ -1,10 +1,11 @@
-export default function Button({
+export function Button({
   children,
   variant = "primary",
   size = "md",
   className = "",
   onClick,
   type = "button",
+  form,
 }) {
   const baseStyles =
     "rounded-lg font-cairo font-semibold transition-all duration-200 flex items-center justify-center gap-2";
@@ -33,6 +34,7 @@ const variants = {
   return (
     <button
       type={type}
+      form={form}
       onClick={onClick}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
     >

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Search, 
   MapPin, 
@@ -18,7 +19,7 @@ import {
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import DoctorCard from '../components/ui/DoctorCard';
-import Button from '../components/ui/Button';
+import { Button } from "../components/ui/button";
 
 // Mock Data
 const specialties = [
@@ -106,10 +107,24 @@ const articles = [
 ];
 
 const PatientHome = () => {
+  const navigate = useNavigate();
+
   return (
     <div dir="rtl" className="min-h-screen bg-gray-50 font-cairo">
       {/* Header */}
       <Navbar showAuthButtons={false} />
+
+      <div className="bg-white border-b border-gray-100">
+        <div className="container mx-auto px-4 py-2 flex justify-end">
+          <button
+            type="button"
+            onClick={() => navigate("/edit-profile")}
+            className="text-sm font-semibold text-[#468EEC] hover:underline"
+          >
+            تعديل الملف الشخصي
+          </button>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-[#468EEC] to-[#2563EB] text-white relative overflow-hidden">
@@ -132,7 +147,12 @@ const PatientHome = () => {
             </div>
             
             <div className="mt-8 flex justify-center md:justify-start">
-              <Button variant="secondary" className="px-8 font-bold border-none text-[#468EEC]">
+              <Button
+                type="button"
+                variant="secondary"
+                className="px-8 font-bold border-none text-[#468EEC]"
+                onClick={() => navigate("/chatbot")}
+              >
                 ابدأ التشخيص المبدئي
               </Button>
             </div>

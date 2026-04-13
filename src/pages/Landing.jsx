@@ -13,7 +13,7 @@ import {
 
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-import Button from "../components/ui/Button";
+import { Button } from "../components/ui/button";
 import DoctorCard from "../components/ui/DoctorCard";
 import SpecialtyBadge from "../components/ui/SpecialtyBadge";
 import FAQItem from "../components/ui/FAQItem";

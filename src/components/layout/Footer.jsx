@@ -1,5 +1,5 @@
 import { MapPin, Mail, Phone } from "lucide-react";
-import Button from "../ui/Button";
+import { Button } from "../ui/button";
 
 export default function Footer() {
   return (

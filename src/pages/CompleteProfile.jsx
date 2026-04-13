@@ -656,13 +656,13 @@ const CompleteProfile = () => {
     // save locally (temporary until backend)
     localStorage.setItem("patientProfile", JSON.stringify(fullProfile));
 
-    navigate("/patient/home");
+    navigate("/patient-home");
 
   };
 
 
   const handleCompleteLater = () => {
-    navigate("/patient/home");
+    navigate("/patient-home");
   };
 
 

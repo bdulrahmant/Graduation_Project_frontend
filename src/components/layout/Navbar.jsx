@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import Button from "../ui/Button";
+import { Button } from "../ui/button";
 import { MapPin, Bell, User, Menu } from "lucide-react";
 
-export default function Navbar({ showAuthButtons = true }) {
+export default function Navbar({
+  showAuthButtons = true,
+  onMobileMenuClick,
+}) {
   return (
     <nav className="bg-white border-b border-gray-100">
       <div className="container mx-auto px-4">
@@ -37,7 +40,12 @@ export default function Navbar({ showAuthButtons = true }) {
                 <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-[#468EEC]">
                   <User size={20} />
                 </div>
-                <button className="md:hidden p-2 text-gray-600">
+                <button
+                  type="button"
+                  className="md:hidden p-2 text-gray-600"
+                  onClick={onMobileMenuClick}
+                  aria-label="فتح القائمة"
+                >
                   <Menu size={24} />
                 </button>
               </>
