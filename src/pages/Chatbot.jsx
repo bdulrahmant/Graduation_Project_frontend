@@ -78,7 +78,12 @@ export default function Chatbot() {
   const speechPrefixRef = useRef("");
   const speechSessionFinalRef = useRef("");
 
+  // inputValueRef.current = inputValue;
+
+  useEffect(() => {
   inputValueRef.current = inputValue;
+}, [inputValue]);
+  
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -214,7 +219,7 @@ export default function Chatbot() {
     if (!text.trim()) return;
 
     const userMessage = {
-      id: Date.now(),
+      id: crypto.randomUUID(),
       text: text.trim(),
       sender: "user",
       time: "الآن",

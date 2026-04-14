@@ -20,6 +20,13 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Profile from "./pages/Profile";
 import FilesPage from "./pages/FilesPage";
 import UploadFilePage from "./pages/UploadFilePage";
+import NotificationsPage from "./pages/NotificationsPage";
+import SavedArticlesPage from "./pages/SavedArticlesPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import VerifyOtpPage from "./pages/VerifyOtpPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ResetSuccessPage from "./pages/ResetSuccessPage";
+
 
 export default function App() {
   return (
@@ -111,6 +118,18 @@ export default function App() {
         <Route path="/files" element={<FilesPage />} />
 
         <Route path="/upload-file" element={<UploadFilePage />} />
+
+        <Route path="/notifications" element={<NotificationsPage />} />
+
+        <Route path="/saved-articles" element={<SavedArticlesPage />} />
+
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+        <Route path="/verify-otp" element={<VerifyOtpPage />} />
+
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+
+        <Route path="/reset-success" element={<ResetSuccessPage />} />
 
         {/* Catch-all Not Found Route */}
         <Route path="*" element={<h1>Not Found</h1>} />
