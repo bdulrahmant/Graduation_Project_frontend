@@ -1,63 +1,78 @@
-
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import UserSignup from "./pages/UserSignup";
-import DoctorSignup from "./pages/DoctorSignup";
-import CompleteProfile from "./pages/CompleteProfile";
-import CompleteDoctorProfile from "./pages/CompleteDoctorProfile";
-import PatientHome from "./pages/PatientHome";
-import DoctorHome from "./pages/DoctorHome";
-import DoctorLogin from "./pages/DoctorLogin";
-import Chatbot from "./pages/Chatbot";
-import EditProfile from "./pages/EditProfile";
-import MedicalProfile from "./pages/MedicalProfile";
-import ChangePassword from "./pages/ChangePassword";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Profile from "./pages/Profile";
-import FilesPage from "./pages/FilesPage";
-import UploadFilePage from "./pages/UploadFilePage";
-import NotificationsPage from "./pages/NotificationsPage";
-import SavedArticlesPage from "./pages/SavedArticlesPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
-import VerifyOtpPage from "./pages/VerifyOtpPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage";
-import ResetSuccessPage from "./pages/ResetSuccessPage";
+// ── Shared ────────────────────────────────────────────────────────────────────
+import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
 
+// ── Public: Auth ──────────────────────────────────────────────────────────────
+import Login from "./pages/auth/Login";
+import SignUp from "./pages/auth/SignUp";
+import UserSignup from "./pages/auth/UserSignup";
+import DoctorLogin from "./pages/auth/DoctorLogin";
+import DoctorSignup from "./pages/auth/DoctorSignup";
+import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage";
+import VerifyOtpPage from "./pages/auth/VerifyOtpPage";
+import ResetPasswordPage from "./pages/auth/ResetPasswordPage";
+import ResetSuccessPage from "./pages/auth/ResetSuccessPage";
+
+// ── Public: Home ──────────────────────────────────────────────────────────────
+import Landing from "./pages/home/Landing";
+
+// ── Protected: Home ───────────────────────────────────────────────────────────
+import PatientHome from "./pages/home/PatientHome";
+import DoctorHome from "./pages/DoctorHome";
+
+// ── Protected: Profile ────────────────────────────────────────────────────────
+import Profile from "./pages/profile/Profile";
+import EditProfile from "./pages/profile/EditProfile";
+import MedicalProfile from "./pages/profile/MedicalProfile";
+import CompleteProfile from "./pages/profile/CompleteProfile";
+import CompleteDoctorProfile from "./pages/profile/CompleteDoctorProfile";
+
+// ── Protected: Files ──────────────────────────────────────────────────────────
+import FilesPage from "./pages/files/FilesPage";
+import UploadFilePage from "./pages/files/UploadFilePage";
+
+// ── Protected: Chatbot ────────────────────────────────────────────────────────
+import Chatbot from "./pages/chatbot/Chatbot";
+
+// ── Protected: Notifications ──────────────────────────────────────────────────
+import NotificationsPage from "./pages/notifications/NotificationsPage";
+
+// ── Protected: Articles ───────────────────────────────────────────────────────
+import SavedArticlesPage from "./pages/articles/SavedArticlesPage";
+
+// ── Protected: Settings ───────────────────────────────────────────────────────
+import ChangePassword from "./pages/settings/ChangePassword";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
 
-        {/* Landing page */}
+        {/* ────────────────────────────────────────────────────────────────── */}
+        {/*  PUBLIC ROUTES — no login required                                 */}
+        {/* ────────────────────────────────────────────────────────────────── */}
+
         <Route path="/" element={<Landing />} />
 
-        {/* Login page */}
+        {/* Auth */}
         <Route path="/login" element={<Login />} />
-
-        {/* Doctor login page */}
         <Route path="/doctor-login" element={<DoctorLogin />} />
-
-        {/* Sign up main page */}
         <Route path="/signup" element={<SignUp />} />
-
-        {/* User signup */}
         <Route path="/signup/user" element={<UserSignup />} />
-
-        {/* Doctor signup */}
         <Route path="/signup/doctor" element={<DoctorSignup />} />
 
-        {/* Complete profile user */}
-        <Route path="/complete-profile" element={<CompleteProfile />} />
+        {/* Password reset flow */}
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/verify-otp" element={<VerifyOtpPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/reset-success" element={<ResetSuccessPage />} />
 
-        {/* Complete profile doctor */}
-        <Route path="/complete-profile/doctor" element={<CompleteDoctorProfile />} />
+        {/* ────────────────────────────────────────────────────────────────── */}
+        {/*  PROTECTED ROUTES — login required (token must exist)              */}
+        {/* ────────────────────────────────────────────────────────────────── */}
 
-        {/* ✅ Patient Home page */}
+        {/* Home */}
         <Route
           path="/patient-home"
           element={
@@ -66,44 +81,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
-        <Route
-          path="/chatbot"
-          element={
-            <ProtectedRoute role="patient">
-              <Chatbot />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/edit-profile"
-          element={
-            <ProtectedRoute role="patient">
-              <EditProfile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/medical-profile"
-          element={
-            <ProtectedRoute role="patient">
-              <MedicalProfile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/change-password"
-          element={
-            <ProtectedRoute role="patient">
-              <ChangePassword />
-            </ProtectedRoute>
-          }
-        />
-
-        {/* ✅ Doctor Home page */}
         <Route
           path="/doctor-home"
           element={
@@ -113,26 +90,111 @@ export default function App() {
           }
         />
 
-        <Route path="/profile" element={<Profile />} />
+        {/* Profile */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit-profile"
+          element={
+            <ProtectedRoute>
+              <EditProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/medical-profile"
+          element={
+            <ProtectedRoute>
+              <MedicalProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/complete-profile"
+          element={
+            <ProtectedRoute>
+              <CompleteProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/complete-profile/doctor"
+          element={
+            <ProtectedRoute>
+              <CompleteDoctorProfile />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/files" element={<FilesPage />} />
+        {/* Files */}
+        <Route
+          path="/files"
+          element={
+            <ProtectedRoute>
+              <FilesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/upload-file"
+          element={
+            <ProtectedRoute>
+              <UploadFilePage />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/upload-file" element={<UploadFilePage />} />
+        {/* Chatbot */}
+        <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <Chatbot />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/notifications" element={<NotificationsPage />} />
+        {/* Notifications */}
+        <Route
+          path="/notifications"
+          element={
+            <ProtectedRoute>
+              <NotificationsPage />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/saved-articles" element={<SavedArticlesPage />} />
+        {/* Articles */}
+        <Route
+          path="/saved-articles"
+          element={
+            <ProtectedRoute>
+              <SavedArticlesPage />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        {/* Settings */}
+        <Route
+          path="/change-password"
+          element={
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/verify-otp" element={<VerifyOtpPage />} />
+        {/* ────────────────────────────────────────────────────────────────── */}
+        {/*  CATCH-ALL                                                          */}
+        {/* ────────────────────────────────────────────────────────────────── */}
 
-        <Route path="/reset-password" element={<ResetPasswordPage />} />
-
-        <Route path="/reset-success" element={<ResetSuccessPage />} />
-
-        {/* Catch-all Not Found Route */}
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<h1>404 — Page Not Found</h1>} />
 
       </Routes>
     </BrowserRouter>
