@@ -1,15 +1,20 @@
+
+
+
+
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { MapPin, Bell, User, Menu } from "lucide-react";
+import rafiqLogo from "../../assets/rafiq-logo.png";
 
 export default function Navbar({
   showAuthButtons = true,
   onMobileMenuClick,
 }) {
   return (
-    <nav className="bg-white border-b border-gray-100">
+    <nav className="bg-white border-b border-gray-100 rounded-b-[16px]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-[90px]">
 
           {/* Auth Buttons */}
           <div className="flex items-center gap-4">
@@ -53,7 +58,7 @@ export default function Navbar({
           </div>
 
           {/* Navigation Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-[24px] w-[598px] h-[64px] justify-center">
             <a
               href="#specialties"
               className="text-[#121212] font-changa text-2xl font-semibold hover:text-[#468EEC] transition-colors"
@@ -83,9 +88,9 @@ export default function Navbar({
           {/* Logo */}
           <div className="flex items-center">
             <img
-              src="https://public.youware.com/image/ce78fa86-83a6-4be6-80bd-778a9e8d16cc/mlo00nt94h.png"
-              alt="منصة رفيق"
-              className="h-16 w-auto"
+              src={rafiqLogo}
+              alt="رفيق"
+              className="h-[55px] w-auto"
             />
           </div>
 
