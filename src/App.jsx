@@ -19,7 +19,7 @@ import Landing from "./pages/home/Landing";
 
 // ── Protected: Home ───────────────────────────────────────────────────────────
 import PatientHome from "./pages/home/PatientHome";
-import DoctorHome from "./pages/DoctorHome";
+import DoctorHome from "./pages/home/DoctorHome.jsx";
 
 // ── Protected: Profile ────────────────────────────────────────────────────────
 import Profile from "./pages/profile/Profile";
@@ -44,6 +44,14 @@ import SavedArticlesPage from "./pages/articles/SavedArticlesPage";
 // ── Protected: Settings ───────────────────────────────────────────────────────
 import ChangePassword from "./pages/settings/ChangePassword";
 
+import Listing from "./pages/listing/Listing";
+import DoctorProfile from "./pages/doctor/DoctorProfile";
+import Booking from "./pages/booking/Booking";
+import Payment from "./pages/booking/Payment";
+import BookingSuccess from "./pages/booking/BookingSuccess";
+import MyBookings from "./pages/booking/MyBookings";
+import BookingDetails from "./pages/booking/BookingDetails";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -67,6 +75,7 @@ export default function App() {
         <Route path="/verify-otp" element={<VerifyOtpPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/reset-success" element={<ResetSuccessPage />} />
+
 
         {/* ────────────────────────────────────────────────────────────────── */}
         {/*  PROTECTED ROUTES — login required (token must exist)              */}
@@ -189,6 +198,80 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/listing"
+          element={
+            <ProtectedRoute>
+              <Listing />
+            </ProtectedRoute>
+          }
+        />
+
+
+        <Route
+          path="/doctor/:id"
+          element={
+            <ProtectedRoute>
+              <DoctorProfile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/booking"
+          element={
+            <ProtectedRoute>
+              <Booking />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/booking/:id"
+          element={
+            <ProtectedRoute>
+              <Booking />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/payment"
+          element={
+            <ProtectedRoute>
+              <Payment />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/booking-success"
+          element={
+            <ProtectedRoute>
+              <BookingSuccess />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/my-bookings"
+          element={
+            <ProtectedRoute>
+              <MyBookings />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/booking-details/:id"
+          element={
+            <ProtectedRoute>
+              <BookingDetails />
+            </ProtectedRoute>
+          }
+        />
+
 
         {/* ────────────────────────────────────────────────────────────────── */}
         {/*  CATCH-ALL                                                          */}

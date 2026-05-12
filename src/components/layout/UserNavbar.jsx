@@ -59,7 +59,7 @@ const UserNavbar = () => {
 
         {/* رفيقك الصحي */}
         <button
-          onClick={() => navigate("/health")}
+          onClick={() => navigate("/chatbot")}
           className="font-changa text-[24px] font-semibold text-[#121212]"
         >
           رفيقك الصحي
@@ -67,7 +67,7 @@ const UserNavbar = () => {
 
         {/* احجز موعد */}
         <button
-          onClick={() => navigate("/book")}
+          onClick={() => navigate("/booking")}
           className="font-changa text-[24px] font-semibold text-[#121212]"
         >
           احجز موعد

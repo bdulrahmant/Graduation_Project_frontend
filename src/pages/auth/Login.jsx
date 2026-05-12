@@ -6,6 +6,8 @@ import rafiqWhiteLogo from "../../assets/rafiq-white-logo.png";
 import signupIllustration from "../../assets/signup-illustration.png";
 import balto from "../../assets/balto.png";
 
+// import { loginUser } from "../../api/auth.api";
+
 export default function Login() {
   const navigate = useNavigate();
 
@@ -55,7 +57,49 @@ export default function Login() {
       setLoading(false);
     }
   };
+  
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
 
+  //   // validation
+  //   if (!email || !password) return;
+
+  //   try {
+  //     setLoading(true);
+
+  //     const data = await loginUser({
+  //       email,
+  //       password,
+  //       role: userType,
+  //     });
+
+  //     console.log(data);
+
+  //     // حفظ البيانات
+  //     localStorage.setItem("token", data.token);
+  //     localStorage.setItem("role", data.role);
+
+  //     // redirect
+  //     if (data.role === "doctor") {
+  //       navigate("/doctor-home");
+  //     } else {
+  //       navigate("/patient-home");
+  //     }
+
+  //   } catch (err) {
+
+  //     console.error(err);
+
+  //     alert(
+  //       err?.response?.data?.message ||
+  //       "حدث خطأ أثناء تسجيل الدخول"
+  //     );
+
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  
   return (
     <div
       className="min-h-screen bg-[#F7FBFF] flex items-center justify-center p-4 md:p-0"
@@ -183,14 +227,14 @@ export default function Login() {
 
               </div>
               <div className="w-full flex justify-end mt-2">
-              <button
-                type="button"
-                onClick={() => navigate("/forgot-password")}
-                className="text-[16px] font-cairo font-semibold text-[#135BB9]"
-              >
-                هل نسيت كلمة السر ؟
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => navigate("/forgot-password")}
+                  className="text-[16px] font-cairo font-semibold text-[#135BB9]"
+                >
+                  هل نسيت كلمة السر ؟
+                </button>
+              </div>
 
               <button
                 type="submit"

@@ -247,7 +247,7 @@ const PatientHome = () => {
           </h3>
 
           <button
-            onClick={() => navigate("/doctors")}
+            onClick={() => navigate("/listing")}
             className="text-[#468EEC] text-sm font-semibold hover:underline"
           >
             عرض الكل
